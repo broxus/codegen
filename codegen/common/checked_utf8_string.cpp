@@ -7,7 +7,7 @@
 #include "codegen/common/checked_utf8_string.h"
 
 #include <iostream>
-#include <QtCore/QTextCodec>
+#include <QTextCodec>
 
 #include "codegen/common/const_utf8_string.h"
 

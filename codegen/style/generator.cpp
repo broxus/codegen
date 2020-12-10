@@ -133,9 +133,9 @@ QString colorFallbackName(structure::Value value) {
 QChar paletteColorPart(uchar part) {
 	part = (part & 0x0F);
 	if (part >= 10) {
-		return 'a' + (part - 10);
+		return QChar('a' + (part - 10));
 	}
-	return '0' + part;
+	return QChar('0' + part);
 }
 
 QString paletteColorComponent(uchar value) {
@@ -838,7 +838,7 @@ int getPaletteIndex(QLatin1String name) {\n\
 	// Returns true if at least one check was finished.
 	auto finishChecksTillKey = [&](const QString &key) {
 		auto result = false;
-		while (!chars.isEmpty() && key.midRef(0, chars.size()) != chars) {
+		while (!chars.isEmpty() && !key.startsWith(chars)) {
 			result = true;
 
 			auto wasType = checkTypes.back();
@@ -850,7 +850,7 @@ int getPaletteIndex(QLatin1String name) {\n\
 				if (wasType == UsedCheckType::Switch) {
 					source_->stream() << tabs(tabsUsed) << "break;\n";
 				}
-				if ((!chars.isEmpty() && key.midRef(0, chars.size()) != chars) || key == chars) {
+				if ((!chars.isEmpty() && !key.startsWith(chars)) || key == chars) {
 					source_->stream() << tabs(tabsUsed) << "}\n";
 				}
 			}

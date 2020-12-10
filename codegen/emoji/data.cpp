@@ -319,7 +319,7 @@ void appendCategory(
 				|| different.size() < 4
 				|| different[1] != Colors[0]
 				|| different[different.size() - 1] != Colors[1]
-				|| std::find(baseId.begin(), baseId.end(), kPostfix) != baseId.end()
+				|| std::find(baseId.begin(), baseId.end(), QChar(kPostfix)) != baseId.end()
 				|| std::find(different.begin(), different.end(), kPostfix) != different.end()) {
 				logDataError() << "bad data in double-colored emoji.";
 				result = Data();
@@ -346,7 +346,7 @@ void appendCategory(
 					}
 				}
 			}
-			
+
 		}
 		result.categories.back().push_back(it->second);
 	}

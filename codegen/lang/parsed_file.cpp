@@ -182,7 +182,7 @@ QString ParsedFile::extractTagsData(const QString &value, LangPack *to) {
 	finalValue.reserve(value.size() * 2);
 	while (tagStart >= 0) {
 		if (tagStart > tagEnd) {
-			finalValue.append(value.midRef(tagEnd, tagStart - tagEnd));
+			finalValue.append(value.mid(tagEnd, tagStart - tagEnd));
 		}
 		++tagStart;
 		tagEnd = value.indexOf('}', tagStart);
@@ -195,7 +195,7 @@ QString ParsedFile::extractTagsData(const QString &value, LangPack *to) {
 		tagStart = value.indexOf('{', tagEnd);
 	}
 	if (tagEnd < value.size()) {
-		finalValue.append(value.midRef(tagEnd));
+		finalValue.append(value.mid(tagEnd));
 	}
 	return finalValue;
 }
