@@ -387,7 +387,7 @@ bool Generator::writeHeaderRequiredIncludes() {
 	} else if (includes.isEmpty()) {
 		return true;
 	}
-	for (const auto base : includes) {
+	for (const auto &base : includes) {
 		header_->include("styles/" + base + ".h");
 	}
 	header_->newline();
@@ -1214,7 +1214,7 @@ QByteArray iconMaskValuePng(QString filepath) {
 			<< png3x.width() << "x" << png3x.height();
 		return result;
 	}
-	for (const auto modifierName : modifiers) {
+	for (const auto &modifierName : modifiers) {
 		if (const auto modifier = GetModifier(modifierName)) {
 			modifier(png1x);
 			modifier(png2x);
